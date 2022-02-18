@@ -1,3 +1,5 @@
+import 'package:exam/models/hotel_model.dart';
+import 'package:exam/screens/data_page.dart';
 import 'package:exam/screens/home_page.dart';
 import 'package:exam/screens/sign_in.dart';
 import 'package:exam/screens/sign_up.dart';
@@ -12,11 +14,12 @@ class MyRoute {
         return MaterialPageRoute(builder: (_) => LogInPage());
       case '/splash':
         return MaterialPageRoute(builder: (_) => SplashPage());
-
       case '/signUp':
         return MaterialPageRoute(builder: (_) => SignUpPage());
-         case '/homePage':
+      case '/homePage':
         return MaterialPageRoute(builder: (_) => HomePage());
+      case '/dataPage':
+        return MaterialPageRoute(builder: (_) => DataPage(hotel: args as HotelModel,));
     }
   }
 }

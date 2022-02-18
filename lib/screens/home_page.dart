@@ -5,6 +5,9 @@ import 'package:exam/core/components/text_bold.dart';
 import 'package:exam/core/constants/constants.dart';
 import 'package:exam/data/city_info.dart';
 import 'package:exam/data/coutry_info.dart';
+import 'package:exam/data/hotel_info.dart';
+import 'package:exam/models/hotel_model.dart';
+import 'package:exam/widgets/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -118,6 +121,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         Container(
+                          margin:const EdgeInsets.only(top:18),
                           height: getHeight(50),
                           width: getWidth(328),
                           decoration: BoxDecoration(
@@ -217,10 +221,9 @@ class _HomePageState extends State<HomePage> {
                         top: 11,
                         left: 18,
                         child: TextBold.myBoldText(
-                          text: CountrInfo.countryInfo[__].name,
-                          fontSize: 22,
-                          color: Colors.white
-                        ),
+                            text: CountrInfo.countryInfo[__].name,
+                            fontSize: 22,
+                            color: Colors.white),
                       ),
                     ],
                   ),
@@ -230,8 +233,128 @@ class _HomePageState extends State<HomePage> {
               scrollDirection: Axis.horizontal,
             ),
           ),
+          Container(
+            alignment: Alignment.bottomLeft,
+            margin: const EdgeInsets.only(top: 38, left: 30),
+            child: TextBold.myBoldText(text: 'Best Deaals', fontSize: 19),
+          ),
+          Container(
+            height: 450,
+            width: getWidth(356),
+            child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (_, __) {
+                HotelModel hotel = HotelInfo.hotelInfo[__];
+                return InkWell(
+                  child: Container(
+                    height: 134,
+                    width: 354,
+                    margin: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(RadiusConst.largeRadius),
+                        topRight: Radius.circular(RadiusConst.largeRadius),
+                      ),
+                      image: DecorationImage(
+                          image: AssetImage(HotelInfo.hotelInfo[__].image),
+                          fit: BoxFit.cover),
+                    ),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 6,
+                          left: 134,
+                          child: TextBold.myBoldText(
+                            text: HotelInfo.hotelInfo[__].name,
+                            fontSize: 14,
+                          ),
+                        ),
+                        Positioned(
+                            top: 28,
+                            left: 134,
+                            child: Text(
+                              HotelInfo.hotelInfo[__].address,
+                              style:
+                                  TextStyle(fontSize: FontsConst.extraSmallFont),
+                            )),
+                        Positioned(
+                            top: 95,
+                            left: 135.53,
+                            child: Icon(
+                              Icons.room,
+                              color: ColorsConst.eColor,
+                              size: 10,
+                            )),
+                        Positioned(
+                          top: 94,
+                          left: 152,
+                          child: Text(
+                            HotelInfo.hotelInfo[__].location,
+                            style: TextStyle(fontSize: FontsConst.extraSmallFont),
+                          ),
+                        ),
+                        Positioned(
+                          top: 91,
+                          left: 267,
+                          child: SizedBox(
+                              width: 90,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  TextBold.myBoldText(
+                                    text: HotelInfo.hotelInfo[__].cost,
+                                    fontSize: 14,
+                                  ),
+                                ],
+                              )),
+                        ),
+                        const Positioned(
+                          top: 109,
+                          left: 312,
+                          child: Text(
+                            'Per Night',
+                            style: TextStyle(fontSize: 10),
+                          ),
+                        ),
+                        Positioned(
+                            top: 110,
+                            left: 134,
+                            child: Container(
+                              height: 10,
+                              width: 90,
+                              child: ListView.builder(
+                                itemBuilder: (_, __) {
+                                
+                                  return Container(
+                                    margin: EdgeInsets.only(left: 3),
+                                    height: 10,
+                                    width: 10,
+                                    child: Image.asset(
+                                      'assets/images/star.png',
+                                      fit: BoxFit.cover,
+                                    ),
+                                  );
+                                },
+                                scrollDirection: Axis.horizontal,
+                                itemCount: HotelInfo.hotelInfo[__].rate,
+                                physics: NeverScrollableScrollPhysics(),
+                              ),
+                            )),
+                      ],
+                    ),
+                  ),
+                  onTap: (){
+                    Navigator.pushNamed(context, '/dataPage',arguments: hotel);
+                  },
+                );
+              },
+              itemCount: HotelInfo.hotelInfo.length,
+            ),
+          ),
         ],
       ),
+      bottomNavigationBar: BottomNavigation().bottomNavigation(context),
+      
     );
   }
 }
