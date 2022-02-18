@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:exam/core/components/sizeconfig.dart';
 import 'package:exam/core/constants/constants.dart';
+import 'package:exam/screens/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:exam/core/components/sizeconfig.dart';
 
@@ -24,8 +25,7 @@ class _SplashPageState extends State<SplashPage> {
         seconds: 3,
       ),
       () {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => HomePage()));
+        Navigator.pushReplacementNamed(context, '/');
       },
     );
   }
