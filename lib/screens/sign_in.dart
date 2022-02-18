@@ -127,8 +127,10 @@ class _LogInPageState extends State<LogInPage> {
                             if (username.userEmail == _controller.text &&
                                 _passwordController.text == username.password) {
                               print(username.password);
-                              Navigator.pushReplacementNamed(context, '/signUp',
+                              Navigator.pushReplacementNamed(
+                                  context, '/homePage',
                                   arguments: _controller.text);
+                              
                             }
                           }
                           MyMessanger.showMyMessenger(
@@ -144,7 +146,7 @@ class _LogInPageState extends State<LogInPage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top:180),
+                      margin: EdgeInsets.only(top: 180),
                       child: Row(
                         children: [
                           SizedBox(
@@ -152,13 +154,14 @@ class _LogInPageState extends State<LogInPage> {
                           ),
                           const Text("Don't have an account?"),
                           TextButton(
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  '/signUp',
-                                );
-                              },
-                              child: const Text('Sign up'),)
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                context,
+                                '/signUp',
+                              );
+                            },
+                            child: const Text('Sign up'),
+                          )
                         ],
                       ),
                     )

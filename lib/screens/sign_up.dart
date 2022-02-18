@@ -19,6 +19,8 @@ class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _controller = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
   bool _textHide = true;
   @override
   Widget build(BuildContext context) {
@@ -67,6 +69,27 @@ class _SignUpPageState extends State<SignUpPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextFormField(
+                            controller: _firstNameController,
+                            decoration: InputComp.inputDecoration(
+                              hintText: 'Enter first name...',
+                              labelText: 'First Name',
+                            ),
+                           
+                          ),
+                          const SizedBox(
+                            height: 20,),
+                          TextFormField(
+                            controller: _lastNameController,
+                            decoration: InputComp.inputDecoration(
+                              hintText: 'Enter last name...',
+                              labelText: 'Last Name',
+                            ),
+                            
+                            
+                          ),
+                          const SizedBox(
+                            height: 20,),
+                          TextFormField(
                             controller: _controller,
                             decoration: InputComp.inputDecoration(
                               hintText: 'Enter mail...',
@@ -87,7 +110,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               hintText: 'Enter password...',
                               labelText: 'Password',
                               suffixIcon: IconButton(
-                                icon: Icon(Icons.remove_red_eye),
+                                icon:const Icon(Icons.remove_red_eye),
                                 onPressed: () {
                                   _textHide = !_textHide;
                                   setState(() {});
@@ -127,7 +150,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             if (username.userEmail == _controller.text &&
                                 _passwordController.text == username.password) {
                               print(username.password);
-                              Navigator.pushReplacementNamed(context, '/signUp',
+                              Navigator.pushReplacementNamed(context, '/homePage',
                                   arguments: _controller.text);
                             }
                           }
@@ -144,21 +167,21 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top:210),
+                      margin: EdgeInsets.only(top:5),
                       child: Row(
                         children: [
                           SizedBox(
                             width: getWidth(80),
                           ),
-                          const Text("Don't have an account?"),
+                          const Text("Already have an account?"),
                           TextButton(
                               onPressed: () {
                                 Navigator.pushNamed(
                                   context,
-                                  '/signUp',
+                                  '/',
                                 );
                               },
-                              child: const Text('Sign up'),)
+                              child: const Text('Sign in'),)
                         ],
                       ),
                     )

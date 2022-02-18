@@ -4,14 +4,18 @@ class ColorsConst {
   static Color kPrimaryColor = Color(0xFF20e4ff);
   static Color redShade = Color(0xFFff355e);
   static Color greyOpasity = Color(0xFFFFFFFF).withOpacity(0.55);
+  static Color whiteOpasity = Color(0xFFFFFFFF).withOpacity(0.80);
   static Color white = Color(0xFFFFFFFF);
   static Color eColor = Color(0xFF00CEC9);
+  static Color blackOpasity = Color(0xFF00000);
+
 }
 
 class FontsConst {
   static double extraSmallFont = 8;
   static double smallFont = 15;
   static double mediumFont = 16;
+  static double smallLargeFont = 22;
   static double largeFont = 30;
   static double extraLargeFont = 46;
   

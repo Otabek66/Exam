@@ -9,12 +9,14 @@ class MyRoute {
     var args = s.arguments;
     switch (s.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) =>  LogInPage());
+        return MaterialPageRoute(builder: (_) => LogInPage());
       case '/splash':
         return MaterialPageRoute(builder: (_) => SplashPage());
-        case '/signUp':
+
+      case '/signUp':
         return MaterialPageRoute(builder: (_) => SignUpPage());
-     
+         case '/homePage':
+        return MaterialPageRoute(builder: (_) => HomePage());
     }
   }
 }
