@@ -43,7 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       height: 40,
                     ),
                     Row(children: [
-                      TextBold.myBoldText(text: "Sign Up"),
+                      TextBold.myBoldText(text: "Sign Up",fontSize: 30),
                     ]),
                     const SizedBox(
                       height: 31,

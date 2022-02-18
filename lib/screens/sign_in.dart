@@ -41,7 +41,7 @@ class _LogInPageState extends State<LogInPage> {
                       height: 40,
                     ),
                     Row(children: [
-                      TextBold.myBoldText(text: "Log in"),
+                      TextBold.myBoldText(text: "Log in",fontSize: 30),
                     ]),
                     const SizedBox(
                       height: 31,
