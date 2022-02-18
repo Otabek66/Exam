@@ -1,4 +1,5 @@
 import 'package:exam/core/components/container_comp.dart';
+import 'package:exam/core/components/sizeconfig.dart';
 import 'package:exam/core/components/text_bold.dart';
 import 'package:exam/core/constants/constants.dart';
 import 'package:exam/data/user_info.dart';
@@ -25,7 +26,7 @@ class _LogInPageState extends State<LogInPage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.8,
+            height: MediaQuery.of(context).size.height,
             child: Padding(
                 padding: PaddingConst.mediumPadding,
                 child: Column(
@@ -48,7 +49,6 @@ class _LogInPageState extends State<LogInPage> {
                     Container(
                       child: Row(
                         children: [
-                          
                           MyContainer.container(Colors.white,
                               'assets/images/google.png', "Google"),
                           SizedBox(
@@ -81,7 +81,6 @@ class _LogInPageState extends State<LogInPage> {
                           const SizedBox(
                             height: 20,
                           ),
-                          
                           TextFormField(
                             controller: _passwordController,
                             decoration: InputComp.inputDecoration(
@@ -105,30 +104,84 @@ class _LogInPageState extends State<LogInPage> {
                         ],
                       ),
                     ),
+                    Container(
+                      margin:
+                          const EdgeInsets.only(top: 20, left: 200, bottom: 32),
+                      child: const Center(
+                        child: Text('Forgot your password?'),
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: ColorsConst.eColor,
+                        fixedSize: const Size(325, 50),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          for (UserLogInModel username in UserInfo.usersInfo) {
+                            if (username.userEmail == _controller.text &&
+                                _passwordController.text == username.password) {
+                              print(username.password);
+                              Navigator.pushReplacementNamed(context, '/signUp',
+                                  arguments: _controller.text);
+                            }
+                          }
+                          MyMessanger.showMyMessenger(
+                              'You mail or password you entered is wrong !',
+                              context);
+                        }
+                      },
+                      child: Text(
+                        "Log in",
+                        style: TextStyle(
+                            fontSize: FontsConst.mediumFont,
+                            color: Colors.white),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top:180),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: getWidth(80),
+                          ),
+                          const Text("Don't have an account?"),
+                          TextButton(
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  '/signUp',
+                                );
+                              },
+                              child: const Text('Sign up'),)
+                        ],
+                      ),
+                    )
                   ],
                 )),
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: signIn,
-        backgroundColor: ColorsConst.redShade,
-        child: const Icon(Icons.chevron_right),
-      ),
     );
   }
 
-  signIn() {
+  signIn(BuildContext context) {
     if (_formKey.currentState!.validate()) {
       for (UserLogInModel username in UserInfo.usersInfo) {
         if (username.userEmail == _controller.text &&
             _passwordController.text == username.password) {
-          Navigator.pushReplacementNamed(context, '/score',
+          print(username.password);
+          Navigator.pushReplacementNamed(context, '/signUp',
               arguments: _controller.text);
-          return true;
         }
       }
-      MyMessanger.showMyMessenger('You mail or password you entered is wrong !', context);
+      MyMessanger.showMyMessenger(
+          'You mail or password you entered is wrong !', context);
     }
   }
 }

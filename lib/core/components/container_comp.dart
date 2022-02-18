@@ -12,8 +12,8 @@ class MyContainer {
             color: color,
             borderRadius: BorderRadius.all(
                 Radius.circular(RadiusConst.extraLargeRadius))),
-        height: getHeight(SizeConstHeight.medium),
-        width: getWidth(SizeConstWidth.large),
+        height: 50,
+        width: 167,
         child: Row(
           children: [
             const SizedBox(

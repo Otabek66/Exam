@@ -4,7 +4,8 @@ class ColorsConst {
   static Color kPrimaryColor = Color(0xFF20e4ff);
   static Color redShade = Color(0xFFff355e);
   static Color greyOpasity = Color(0xFFFFFFFF).withOpacity(0.55);
-  static Color black = Color(0xFFFFFFFF);
+  static Color white = Color(0xFFFFFFFF);
+  static Color eColor = Color(0xFF00CEC9);
 }
 
 class FontsConst {
