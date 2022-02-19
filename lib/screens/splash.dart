@@ -67,14 +67,14 @@ class _SplashPageState extends State<SplashPage> {
                   margin:const EdgeInsets.only(top: 11),
                   height: getHeight(43),
                   width: getWidth(250),
-                  child: Column(children: [
+                  child: Column(children:const [
                     Text(
                       'Welcome to peshot',
-                      style: TextStyle(fontSize: FontsConst.smallFont),
+                      style: TextStyle(fontSize: 12),
                     ),
                     Text(
                       'Book easy and cheap hotels only on Peshot',
-                      style: TextStyle(fontSize: FontsConst.smallFont),
+                      style: TextStyle(fontSize: 12),
                     ),
                   ]),
                 ),

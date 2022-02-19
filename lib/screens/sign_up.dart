@@ -43,7 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       height: 40,
                     ),
                     Row(children: [
-                      TextBold.myBoldText(text: "Sign Up",fontSize: 30),
+                      TextBold.myBoldText(text: "Sign Up", fontSize: 30),
                     ]),
                     const SizedBox(
                       height: 31,
@@ -53,7 +53,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         children: [
                           MyContainer.container(Colors.white,
                               'assets/images/google.png', "Google"),
-                         const SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           MyContainer.container(Colors.blue,
@@ -74,21 +74,20 @@ class _SignUpPageState extends State<SignUpPage> {
                               hintText: 'Enter first name...',
                               labelText: 'First Name',
                             ),
-                           
                           ),
                           const SizedBox(
-                            height: 20,),
+                            height: 20,
+                          ),
                           TextFormField(
                             controller: _lastNameController,
                             decoration: InputComp.inputDecoration(
                               hintText: 'Enter last name...',
                               labelText: 'Last Name',
                             ),
-                            
-                            
                           ),
                           const SizedBox(
-                            height: 20,),
+                            height: 20,
+                          ),
                           TextFormField(
                             controller: _controller,
                             decoration: InputComp.inputDecoration(
@@ -110,7 +109,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               hintText: 'Enter password...',
                               labelText: 'Password',
                               suffixIcon: IconButton(
-                                icon:const Icon(Icons.remove_red_eye),
+                                icon: const Icon(Icons.remove_red_eye),
                                 onPressed: () {
                                   _textHide = !_textHide;
                                   setState(() {});
@@ -146,17 +145,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          for (UserLogInModel username in UserInfo.usersInfo) {
-                            if (username.userEmail == _controller.text &&
-                                _passwordController.text == username.password) {
-                              print(username.password);
-                              Navigator.pushReplacementNamed(context, '/homePage',
-                                  arguments: _controller.text);
-                            }
+                          {
+                            UserInfo.usersInfo.add(UserLogInModel(_controller.text, _passwordController.text));
+                            Navigator.pushReplacementNamed(context, '/',
+                                arguments: _controller.text);
                           }
-                          MyMessanger.showMyMessenger(
-                              'You mail or password you entered is wrong !',
-                              context);
                         }
                       },
                       child: Text(
@@ -167,7 +160,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top:5),
+                      margin: EdgeInsets.only(top: 5),
                       child: Row(
                         children: [
                           SizedBox(
@@ -175,13 +168,14 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           const Text("Already have an account?"),
                           TextButton(
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  '/',
-                                );
-                              },
-                              child: const Text('Sign in'),)
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                context,
+                                '/',
+                              );
+                            },
+                            child: const Text('Sign in'),
+                          )
                         ],
                       ),
                     )
