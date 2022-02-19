@@ -1,16 +1,29 @@
 # exam
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Ilova haqida
 
-A few resources to get you started if this is your first Flutter project:
+### SplashPage va HomePage
+<p>
+<img src="./screenshots/home.png" alt="Home" width="45%"> 
+<img src="./screenshots/splash.png" alt="Splash" width="45%"></p>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<a href = "./lib/screens/home_page.dart">Home</a>
+<a href = "./lib/screens/splash.dart">Splash</a>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### Sign in va Register Page
+<p>
+<img src="./screenshots/login.png" alt="SignIn" width="45%"> 
+<img src="./screenshots/Sign_up.png" alt="SignUp" width="45%"> </p>
+<a href = "./lib/screens/sign_in.dart">SignIn</a>
+<a href = "./lib/screens/sign_up.dart">SignUp</a>
+
+
+##### Details page
+<p>
+<img src="./screenshots/detail_room.png" alt="Details" width="45%"> 
+<img src="./screenshots/detail_room1.png" alt="Details" width="45%"> 
+</p>
+<a href = "./lib/screens/data_page.dart">DetailsPage</a>
+
