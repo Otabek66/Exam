@@ -223,24 +223,69 @@ class _DataPageState extends State<DataPage> {
                     ),
                     title: TextBold.myBoldText(text: 'Kang Jhon', fontSize: 14),
                     subtitle: Text('3 hour 43 min ago'),
-                    trailing: Container(height: 30,width:62,
+                    trailing: Container(
+                      height: 30,
+                      width: 62,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                        Text('Rating'),
-                        Row(children: [
-                          Image(image: AssetImage('assets/images/star.png'),height: 10,width: 10,)
-                        ],)
-                      ],),
+                          Text('Rating'),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              _littleStar(),
+                              _littleStar(),
+                              _littleStar(),
+                              _littleStar(),
+                              _littleStar(),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                )],
+                )
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 50,right: 50),
+            child: ElevatedButton(
+              
+              onPressed: () {
+                showDialog(
+                  
+                  context: context,
+                  builder: (_) => Container(
+                    
+                    margin: const EdgeInsets.only(
+                        left: 53, right: 53, top: 200, bottom: 250),
+                    decoration: const BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/accepted.png'),
+                            fit: BoxFit.cover)),
+                  ),
+                );
+              },
+              
+              child: const Center(
+                child: Text('Reverse Room'),
+              ),
+              
             ),
           )
         ],
       ),
     );
   }
+
+  Image _littleStar() => Image(
+        image: AssetImage('assets/images/star.png'),
+        height: 10,
+        width: 10,
+      );
 
   Container _dviderLine(double top) {
     return Container(
